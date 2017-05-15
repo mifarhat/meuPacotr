@@ -1,0 +1,85 @@
+---
+title: "Criando Pacotes no R"
+author: "Beatriz V., Evelin A., Milene F."
+date: "15 de maio de 2017"
+output: html_document
+---
+
+##Introdução
+(Explicar)
+
+R Sofware Livre, o que é um pacote. Pacotes para suprir necessidades e otimização de funções que trazem resultado para analise de dados. Todos podemos criar pacotes!
+
+GitHub
+CRAN
+
+##Passo a passo
+#1a parte
+
+-Criar um repositório no GitHub (é preciso criar uma conta no GitHub): o nome do repositório será o nome do pacote. Nele é permitido utilizar letras maiúsculas/minúsculas, traço e ponto (não sei se tem mais algum caracter permitido, confirmar), (público - qualquer pessoa pode ver seu repositório quando acessa o R mas não pode editar, privado vc tem controle de quem acessa mas é pago).
+-É importante iniciar o repositório com o arquivo README (ticar essa opção), dessa forma será possível cloná-lo em seu computador. 
+- Criar repositório!
+(print da tela)
+
+#2a parte: No R!
+
+-Instalar Git Dash no seu computador
+-Download do repositório no seu computador(lembrar as formas de se fazer isso, direto pelo site ele vem zipado e precisa extrair)
+-Abrir o projeto no RStudio: Project -> New Project -> Version Control -> Git Repository -> URL -> Create Project
+-Utilizaremos o pacote **devtools** para continuarmos na criação do pacote. O devtools nos auxilia realizando muitos passos automaticamente.
+- devtools::setup('diretório')
+
+```{r}
+Package: meuPacotr
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.3.3)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+```
+
+- Após setup (Dei um print da tela que contém as pastinhas - READ ME, DESCRIPTION, RBUILTIGNORE, GITIGNORE,... - criadas após rodar o setup)
+
+- Explicar LazyData: quando nossos pacotes dependem de outros pacotes, o LazyData faz com que, na instalação, ele apenas instale o que é necessário sobre os pacotes existentes para não sobrecarregar o R.
+
+- Entrar na pasta R -> Novo script: Crie sua função.
+Atenção: você DEVE iniciar com uma função, pois é necessário que receba um argumento. Abaixo um exemplo:
+
+```{r}
+exp <- function(x,n){
+  x^n
+}
+```
+
+- Documentar: 
+Ainda no script contendo a função, você deve documentar o que a função faz utilizando o caractér especial " **#'** " na seguinte ordem:
+
+```{r}
+#' Título da função
+#'
+#' Descrição
+#'
+#' Argumentos (utilizar @param),
+#' @param x primeiro elemento
+#' @param n segundo elemento
+#'
+
+
+```
+
+
+
+
+#' na mesma ordem do help
+digite @ e veja suas opções. Exemplo: @param para os argumentos da função
+não se esqueça do @export caso queira que apareça na somar::
+devtools::document() para criar a ajuda - usa roxygen2 altera arquivo NAMESPACE
+devtools::use_mit_license()
+devtools::check()
+commit
+push
+devtools::use_travis
+Saiba mais em: r-pkgs.had.co.nz
