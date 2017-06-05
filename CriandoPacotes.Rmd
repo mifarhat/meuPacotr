@@ -6,31 +6,27 @@ output: html_document
 ---
 
 ##Introdução
-(Explicar)
 
-R Sofware Livre, o que é um pacote. Pacotes para suprir necessidades e otimização de funções que trazem resultado para analise de dados. Todos podemos criar pacotes!
+R é um Software Livre, e qualquer usuário pode criar e utilizar pacotes gratuitamente e livremente. Por conta disso, existem muitos pacotes já criados, sendo essa uma de suas maiores vantagens. O CRAN (Comprehensive R Archive Network) é o repositório oficial do R e possui uma relação de seus pacotes em https://cran.r-project.org/web/packages/available_packages_by_name.html que podem ser baixados pelo comando install.packages("Nome do Pacote"). 
 
-GitHub
-CRAN
+Existem outros meios de obter pacotes que não estão no CRAN, como os disponíveis no GitHub. Com o Git instalado em seu computador, os pacotes podem ser baixados pelo comando install_github("usuario/repositório"), que está disponível no pacote devtools. Caso não encontre o que procura, você pode criar seu próprio pacote e compartilhar com os demais usuários. 
 
-##Passo a passo
-#1a parte
+No passo a passo a seguir, mostraremos o processo de criação de pacotes utilizando o GitHub, mas qualquer pacote pode ser criado offline e compartilhado da forma como preferir.
 
--Criar um repositório no GitHub (é preciso criar uma conta no GitHub): o nome do repositório será o nome do pacote. Nele é permitido utilizar letras maiúsculas/minúsculas, traço e ponto (não sei se tem mais algum caracter permitido, confirmar), (público - qualquer pessoa pode ver seu repositório quando acessa o R mas não pode editar, privado vc tem controle de quem acessa mas é pago).
--É importante iniciar o repositório com o arquivo README (ticar essa opção), dessa forma será possível cloná-lo em seu computador. 
-- Criar repositório!
-(print da tela)
+##1ª parte: no GitHub
 
-#2a parte: No R!
+-Com uma conta no GitHub, criar um repositório. O nome do repositório será o nome do seu pacote. Não há regras para nomeá-lo, mas existem algumas boas práticas sugeridas pelo Hadley Wickham, como o de evitar underlines, bem como misturar letras maiúsculas e minúsculas, a fim de evitar confusões na hora de lembrar, escolher abreviações que remetam à funcionalidade do pacote, e terminar com um 'r'.  
 
--Instalar Git Dash no seu computador
--Download do repositório no seu computador(lembrar as formas de se fazer isso, direto pelo site ele vem zipado e precisa extrair)
--Abrir o projeto no RStudio: Project -> New Project -> Version Control -> Git Repository -> URL -> Create Project
--Utilizaremos o pacote **devtools** para continuarmos na criação do pacote. O devtools nos auxilia realizando muitos passos automaticamente.
-- devtools::setup('diretório')
+-Ao criar o repositório, é importante selecionar a opção com o arquivo README, dessa forma será possível cloná-lo em seu computador. 
+-Com o Git Bash instalado, faça o download do repositório no seu computador. Para isso, **(lembrar as formas de se fazer isso, direto pelo site ele vem zipado e precisa extrair)**
+
+##2ª parte: No R!
+
+-Abrir o projeto no RStudio: **Project -> New Project -> Version Control -> Git Repository -> URL -> Create Project**
+-Utilizaremos o pacote **devtools** para continuarmos na criação do pacote. O devtools nos auxilia realizando muitos passos automaticamente. Com o comando **devtools::setup('diretório')**, teremos:
 
 ```{r}
-Package: meuPacotr
+Package: meupacotr
 Title: What the Package Does (one line, title case)
 Version: 0.0.0.9000
 Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
